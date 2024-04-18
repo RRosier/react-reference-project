@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as styles from './budget-list-view.styles';
-import { BudgetList } from '../../components/budget-list/budget-list';
+import { BudgetList } from '@/components/budget-list/budget-list';
 
 export interface IBudgetListViewProps { }
 

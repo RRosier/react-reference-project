@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Table, TableHeader, TableBody, TableRow, TableHeaderCell, TableCell } from '@fluentui/react-components';
-import { budgetItem, budgetItemColumn } from '../../models/budget-item.model';
+import { budgetItem, budgetItemColumn } from '@/models/budget-item.model';
 
 export interface IBudgetListProps { items: budgetItem[], columns: budgetItemColumn[] }
 

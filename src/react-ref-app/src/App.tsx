@@ -1,6 +1,6 @@
 import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
-import { BudgetListView } from './views';
+import { BudgetListView } from '@/views';
 
 function App() {
 
