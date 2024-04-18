@@ -1,25 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import { appStyles as styles } from './App.styles';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { BudgetListView } from './views';
 
 function App() {
+
+  const Routing = () => {
+    return (
+      <Routes>
+        <Route path="/" element={<BudgetListView />} />
+      </Routes>
+    )
+  };
+
   return (
-    <div className={styles.App}>
-      <header className={styles['App-header']}>
-        <img src={logo} className={styles['App-logo']} alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className={styles['App-link']}
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div >
+    <Router>
+      {/* <GlobalNavMenu /> */}
+      <Routing />
+      {/* <GlobalFooter /> */}
+    </Router>
   );
 }
 
