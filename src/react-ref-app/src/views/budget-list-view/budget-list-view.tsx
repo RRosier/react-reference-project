@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Table, TableHeader, TableBody, TableRow, TableHeaderCell, TableCell } from '@fluentui/react-components';
 import * as styles from './budget-list-view.styles';
+import { BudgetList } from '../../components/budget-list/budget-list';
 
 export interface IBudgetListViewProps { }
 
@@ -22,26 +22,9 @@ export const BudgetListView = (props: IBudgetListViewProps) => {
     ];
 
     return (
-        <Table>
-            <TableHeader>
-                <TableRow>
-                    {columns.map((column) => (
-                        <TableHeaderCell key={column.columnKey}>
-                            {column.label}
-                        </TableHeaderCell>
-                    ))}
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-                {items.map((item) => (
-                    <TableRow>
-                        <TableCell>{item.date}</TableCell>
-                        <TableCell>{item.category}</TableCell>
-                        <TableCell>{item.amount}</TableCell>
-                        <TableCell>{item.notes}</TableCell>
-                    </TableRow>
-                ))}
-            </TableBody>
-        </Table>
+        <>
+            <h1>Budget list view</h1>
+            <BudgetList items={items} columns={columns} />
+        </>
     );
 };
