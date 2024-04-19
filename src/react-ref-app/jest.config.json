@@ -1,0 +1,48 @@
+{
+    "verbose": true,
+    "moduleFileExtensions": [
+        "ts",
+        "tsx",
+        "js",
+        "json"
+    ],
+    "moduleDirectories": [
+        "node_modules"
+    ],
+    "moduleNameMapper": {
+        "\\.(css|less|scss|sass|resx)$": "identity-obj-proxy",
+        "^@/(.*)": "<rootDir>/src/$1"
+    },
+    "transform": {
+        "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "testMatch": [
+        "**/src/**/*.test.+(ts|tsx)"
+    ],
+    "setupFiles": [
+        "<rootDir>/tests/tests-setup.ts"
+    ],
+    "clearMocks": true,
+    "testEnvironment": "node",
+    "testEnvironmentOptions": {},
+    "collectCoverage": true,
+    "coverageReporters": [
+        "json",
+        "lcov",
+        "text",
+        "cobertura"
+    ],
+    "coverageDirectory": "<rootDir>/test-results",
+    "reporters": [
+        "default",
+        "jest-junit"
+    ],
+    "coverageThreshold": {
+        "global": {
+            "branches": 0,
+            "functions": 0,
+            "lines": 0,
+            "statements": 0
+        }
+    }
+}
