@@ -26,6 +26,14 @@
     "testEnvironment": "node",
     "testEnvironmentOptions": {},
     "collectCoverage": true,
+    "collectCoverageFrom": [
+        "src/**/*.(ts|tsx)"
+    ],
+    "coveragePathIgnorePatterns": [
+        ".(styles|moc(k|ks)|d).ts",
+        "index.ts",
+        "reportWebVitals.ts"
+    ],
     "coverageReporters": [
         "json",
         "lcov",

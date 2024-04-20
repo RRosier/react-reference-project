@@ -1,10 +1,8 @@
 import * as React from 'react';
-import * as styles from './budget-list-view.styles';
 import { Spinner } from '@fluentui/react-components';
 import { BudgetList } from '@/components/budget-list/budget-list';
 import { useBudgetService } from '@/services';
 import { budgetItem } from '@/models';
-import { setStylesTarget } from 'typestyle';
 
 export interface IBudgetListViewProps { }
 
@@ -26,11 +24,19 @@ export const BudgetListView = (props: IBudgetListViewProps) => {
     ];
 
     React.useEffect(() => {
-        _service.getEntries()
-            .then(items => {
-                setState(prevState => { return { ...prevState, items: items }; });
-            })
-            .finally(() => setState(prevState => { return { ...prevState, loading: false }; }));
+        const loadEntries = async () => {
+            _service.getEntries()
+                .then(items => {
+                    setState(prevState => { return { ...prevState, items: items }; });
+                })
+                .finally(() => setState(prevState => { return { ...prevState, loading: false }; }));
+        };
+        // const loadEntries = async () => {
+        //     const items = await _service.getEntries();
+        //     setState(prevState => { return { ...prevState, items: items, loading: false }; });
+        // };
+
+        loadEntries();
     }, []);
 
     return (
