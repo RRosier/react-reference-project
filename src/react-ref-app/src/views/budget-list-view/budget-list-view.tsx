@@ -16,34 +16,19 @@ export const BudgetListView = (props: IBudgetListViewProps) => {
     const [state, setState] = React.useState<IState>({ items: [], loading: true });
     const _service = useBudgetService();
 
-    const columns = [
-        { columnKey: "date", label: "Date" },
-        { columnKey: "category", label: "Category" },
-        { columnKey: "amount", label: "Amount" },
-        { columnKey: "notes", label: "Notes" }
-    ];
-
     React.useEffect(() => {
-        const loadEntries = async () => {
-            _service.getEntries()
-                .then(items => {
-                    setState(prevState => { return { ...prevState, items: items }; });
-                })
-                .finally(() => setState(prevState => { return { ...prevState, loading: false }; }));
-        };
-        // const loadEntries = async () => {
-        //     const items = await _service.getEntries();
-        //     setState(prevState => { return { ...prevState, items: items, loading: false }; });
-        // };
-
-        loadEntries();
+        _service.getEntries()
+            .then(items => {
+                setState(prevState => { return { ...prevState, items: items }; });
+            })
+            .finally(() => setState(prevState => { return { ...prevState, loading: false }; }));
     }, []);
 
     return (
         <>
             <h1>Budget Entries List</h1>
             {state.loading && <Spinner labelPosition="before" label="Loading entries..." />}
-            {!state.loading && <BudgetList items={state.items} columns={columns} />}
+            {!state.loading && <BudgetList items={state.items} />}
         </>
     );
 };

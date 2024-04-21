@@ -31,12 +31,6 @@ describe('view rendering', () => {
         await waitForElementToBeRemoved(() => screen.queryByText(/Loading entries/));
 
         expect(screen.queryByText(/Loading entries/)).toBeNull();
-
-        /// this no longer works. setImmediate is from node. current runtime is jsdom.
-        // setImmediate(() => {
-        //     expect(screen.queryByText(/Loading entries/)).toBeNull();
-        //     done();
-        // });
     });
 
     it('display list of entries after loading', async () => {

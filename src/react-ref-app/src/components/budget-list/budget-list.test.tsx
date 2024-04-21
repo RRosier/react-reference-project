@@ -21,13 +21,7 @@ describe('budget list rendering', () => {
             { date: '2024-04-17', category: 'food', amount: 200, notes: 'salary' },
             { date: '2024-04-18', category: 'clothing', amount: -59.55, notes: '' }
         ];
-        const columns = [
-            { columnKey: "date", label: "Date" },
-            { columnKey: "category", label: "Category" },
-            { columnKey: "amount", label: "Amount" },
-            { columnKey: "notes", label: "Notes" }
-        ];
-        render(<BudgetList items={items} columns={columns} />);
+        render(<BudgetList items={items} />);
         expect(screen.getByRole('table')).toBeInTheDocument();
     });
 });

@@ -4,14 +4,21 @@ import { budgetItem, budgetItemColumn } from '@/models/budget-item.model';
 
 export interface IBudgetListProps { items?: budgetItem[], columns?: budgetItemColumn[] }
 
-interface IState { items?: budgetItem[], columns?: budgetItemColumn[] };
+interface IState { items?: budgetItem[] };
+
+const _columns = [
+    { columnKey: "date", label: "Date" },
+    { columnKey: "category", label: "Category" },
+    { columnKey: "amount", label: "Amount" },
+    { columnKey: "notes", label: "Notes" }
+];
 
 export const BudgetList = (props: IBudgetListProps) => {
 
     const [state, setState] = React.useState<IState>({});
 
     React.useEffect(() => {
-        setState({ items: props.items, columns: props.columns });
+        setState({ items: props.items });
     }, [props.items, props.columns]);
 
     return (
@@ -20,7 +27,7 @@ export const BudgetList = (props: IBudgetListProps) => {
                 <Table>
                     <TableHeader>
                         <TableRow>
-                            {state.columns?.map((column) => (
+                            {_columns?.map((column) => (
                                 <TableHeaderCell key={column.columnKey}>
                                     {column.label}
                                 </TableHeaderCell>
