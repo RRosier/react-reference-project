@@ -5,8 +5,13 @@
 // not sure where to put this input. not working in tests-setup.ts file.
 import '@testing-library/jest-dom';
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import { BudgetList } from './budget-list';
+
+afterEach(() => {
+    // unmount React trees that were mounted with render.
+    cleanup();
+});
 
 describe('budget list rendering', () => {
 

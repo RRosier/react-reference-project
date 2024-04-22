@@ -5,7 +5,7 @@
 // not sure where to put this input. not working in tests-setup.ts file.
 import '@testing-library/jest-dom';
 import * as React from 'react';
-import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
+import { cleanup, render, screen, waitForElementToBeRemoved } from '@testing-library/react';
 import { budgetGetEntriesMock, useBudgetServiceMock } from '@/services/mocks';
 import { BudgetListView } from './budget-list-view';
 
@@ -16,6 +16,11 @@ jest.mock('@/services', () => ({
 beforeEach(() => {
     // reset any mock implementations.
     budgetGetEntriesMock.mockImplementation(() => Promise.resolve([]));
+});
+
+afterEach(() => {
+    // unmount React trees that were mounted with render.
+    cleanup();
 });
 
 describe('view rendering', () => {
@@ -40,6 +45,8 @@ describe('view rendering', () => {
         // wait until the 'loading' spinner is gone after retrieving the data.
         await waitForElementToBeRemoved(() => screen.queryByText(/Loading entries/));
 
-        expect(screen.getByRole('table')).toBeInTheDocument();
+        // TODO-rro: test failing. seems table has not been rendered when check is done. not sure how to test nested components with RTL.
+        // wait until subcomponent finishes re-rendering with table.
+        expect(await screen.findByRole('table')).toBeInTheDocument();
     });
 });
